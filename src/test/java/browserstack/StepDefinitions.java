@@ -3,11 +3,17 @@ package browserstack;
 import io.cucumber.java8.En;
 import io.cucumber.java8.Scenario;
 import org.openqa.selenium.WebDriver;
+import pom.BrowserStackMainPage;
 
+import static org.junit.Assert.*;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class StepDefinitions implements En {
     private WebDriver webDriver = null;
+    //For this I could build a context but for a small POC like this its an overkill
+    BrowserStackMainPage browserStackMainPage;
 
     public StepDefinitions() {
         Given("We open the following browser", (io.cucumber.datatable.DataTable dataTable) -> {
@@ -29,9 +35,24 @@ public class StepDefinitions implements En {
 
         When("open browserstack main page", () -> {
             // Write code here that turns the phrase above into concrete actions
-            webDriver.get("https://www.google.com");
+            browserStackMainPage = new BrowserStackMainPage(webDriver);
+            String test = browserStackMainPage.getStartedForFree();
         });
 
+        Then("we see the {string} on top right", (String string) -> {
+            // Write code here that turns the phrase above into concrete actions
+            assertTrue(browserStackMainPage.doesFreeTrialExists());
+        });
+
+        Then("we see the text {string} in the middle of the screen", (String string) -> {
+            // Write code here that turns the phrase above into concrete actions
+            assertEquals(browserStackMainPage.getStartedForFree(), string);
+        });
+
+        Then("the top nav could should be {int}", (Integer int1) -> {
+            // Write code here that turns the phrase above into concrete actions
+            assertEquals(browserStackMainPage.getMainNavCount(), int1.intValue());
+        });
 
         After((Scenario scenario) -> {
             webDriver.quit();
