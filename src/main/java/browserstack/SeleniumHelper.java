@@ -25,8 +25,6 @@ public class SeleniumHelper {
         caps.setCapability("name", browser + "-" + browserVersion + "-" + os);
         caps.setCapability("build", build);
 
-        System.out.println(build);
-
         return new RemoteWebDriver(new URL(URLTest), caps);
     }
 }
