@@ -1,13 +1,13 @@
 Feature: Learn data table
 
-  Scenario Outline:  Cucumber Data Table
+  Scenario Outline:  Browser Stack should have necessary elements on first page
     Given We open the following browser
       | Browser        | <browser>         |
       | BrowserVersion | <browser_version> |
       | OS             | <os>              |
       | OSVersion      | <os_version>      |
       | Resolution     | <resolution>      |
-    When open google.com
+    When open browserstack main page
 
 
     Examples:

@@ -27,9 +27,9 @@ public class StepDefinitions implements En {
                     mapCapability.get("Resolution"));
         });
 
-        When("open google.com", () -> {
+        When("open browserstack main page", () -> {
             // Write code here that turns the phrase above into concrete actions
-            webDriver.get("http://www.google.com");
+            webDriver.get("https://www.google.com");
         });
 
 
