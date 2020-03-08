@@ -1,4 +1,4 @@
-Feature: Learn data table
+Feature: Browser Stack Website
 
   Scenario Outline:  Browser Stack should have necessary elements on first page
     Given We open the following browser
