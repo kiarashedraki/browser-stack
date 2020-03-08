@@ -3,6 +3,7 @@ package browserstack;
 import io.cucumber.java8.En;
 import io.cucumber.java8.Scenario;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pom.BrowserStackMainPage;
 
 import static org.junit.Assert.*;
@@ -55,7 +56,13 @@ public class StepDefinitions implements En {
         });
 
         After((Scenario scenario) -> {
+            scenario.write(
+                    "you can access the browser stack here : " +
+                            "https://automate.browserstack.com/dashboard/v2/sessions/"
+                            + ((RemoteWebDriver) webDriver).getSessionId().toString());
             webDriver.quit();
+
+
         });
 
 
